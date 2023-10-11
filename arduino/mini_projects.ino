@@ -1,7 +1,6 @@
 #include <avr/wdt.h>
 #include <avr/sleep.h>
 #include <avr/interrupt.h>
-#define wdt_timeout_4sec	8	//ค่าเวลารอ	4.0	วินาที
 
 #include "FUNC_LCD.h"
 #include "FUNC_TM1638.h"
@@ -21,8 +20,6 @@
 #define ODROID_TX 5
 #define PMS_RX 10
 #define PMS_TX 11
-
-#define AQT
 
 #define DHTPIN 6
 #define DHTTYPE DHT11
