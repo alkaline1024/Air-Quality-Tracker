@@ -37,7 +37,7 @@ bool getDate(const char *str)
 
 void setTimeRTC()
 {
-    bool parse=false;
+  bool parse=false;
   bool config=false;
 
   // get the date and time the compiler was run

@@ -12,18 +12,9 @@
 
 SoftwareSerial pms_serial(RX_PIN, TX_PIN);
 
-char ssid[] = "R202 WiFi";
-char pass[] = "!q2w3e4r5t";
+char ssid[] = "ssid";
+char pass[] = "pass";
 BlynkTimer timer;
-
-uint8_t sw_code = 0;
-uint16_t analog_20_per = 0;
-uint8_t g_led_for_blink = 0;
-uint8_t r_led_for_blink = 1;
-int last_time = 0;
-bool delay_mode = false;
-bool blynk_control_all_led = false;
-
 
 BLYNK_CONNECTED()
 {
@@ -80,5 +71,4 @@ void loop()
 {
   Blynk.run();
   timer.run();
-  
 }

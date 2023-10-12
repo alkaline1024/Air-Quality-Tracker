@@ -6,20 +6,6 @@ import requests
 import datetime
 from zoneinfo import ZoneInfo
 
-serial = wpi.serialOpen('/dev/ttyS1', 19200)
-
-wpi.wiringPiSetup()
-    
-baseURL = 'https://api.thingspeak.com/update?api_key=GXJMTTWAAFZZ6667'
-
-data = {
-    "pm1_0": [],
-    "pm2_5": [],
-    "pm10_0": [],
-}
-started_time = time.time()
-
-
 quickReplyMessage = {
     "type": "text",
     "text": "เลือกตรวจสอบค่าฝุ่น",
@@ -74,6 +60,7 @@ danger_level_message = {
         },
     ]
 }
+
 def handler_line_chatbot(pm1_0, pm2_5, pm10_0):
     try:
         if pm2_5 < 50:
@@ -142,6 +129,15 @@ def handler_line_chatbot(pm1_0, pm2_5, pm10_0):
         return False
 
 
+serial = wpi.serialOpen('/dev/ttyS1', 19200)
+wpi.wiringPiSetup()
+baseURL = 'https://api.thingspeak.com/update?api_key=GXJMTTWAAFZZ6667'
+data = {
+    "pm1_0": [],
+    "pm2_5": [],
+    "pm10_0": [],
+}
+started_time = time.time()
 while True:
     if wpi.serialDataAvail(serial):
         pms_data = ""

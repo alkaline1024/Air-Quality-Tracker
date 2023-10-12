@@ -38,7 +38,6 @@ void readDisplayDS1307()
   if (RTC.read(tm))
   {
     sendCommand(0x44);
-   
 
     lcd.print(format2digits(tm.Day));
     lcd.print("/");
