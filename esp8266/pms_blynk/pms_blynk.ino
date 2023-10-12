@@ -12,21 +12,22 @@
 
 SoftwareSerial pms_serial(RX_PIN, TX_PIN);
 
-char ssid[] = "ssid";
-char pass[] = "pass";
+char ssid[] = "dxnhkrp";
+char pass[] = "mairuisas";
 BlynkTimer timer;
 
 BLYNK_CONNECTED()
 {
-  Blynk.setProperty(V100 ,"offImageUrl", "https://staticimage.nyc3.cdn.digitaloceanspaces.com/general/fte/congratulations.png");
-  Blynk.setProperty(V100 ,"onImageUrl", "https://staticimage.nyc3.cdn.digitaloceanspaces.com/general/fte/congratulations_pressed.png");
+  Blynk.setProperty(V100, "offImageUrl", "https://staticimage.nyc3.cdn.digitaloceanspaces.com/general/fte/congratulations.png");
+  Blynk.setProperty(V100, "onImageUrl", "https://staticimage.nyc3.cdn.digitaloceanspaces.com/general/fte/congratulations_pressed.png");
   Blynk.setProperty(V100, "url", "https://docs.blynk.io/en/getting-started/what-do-i-need-to-blynk/how-quickstartdevice-was-made");
 }
 
 void ReadPMS()
 {
-  if (pms_serial.available()) {
-    String data = pms_serial.readStringUntil('\n'); 
+  if (pms_serial.available())
+  {
+    String data = pms_serial.readStringUntil('\n');
     int pm1_0, pm2_5, pm10_0;
     sscanf(data.c_str(), "%d,%d,%d", &pm1_0, &pm2_5, &pm10_0);
 
@@ -41,17 +42,20 @@ void ReadPMS()
     Blynk.virtualWrite(V0, pm1_0);
     Blynk.virtualWrite(V1, pm2_5);
     Blynk.virtualWrite(V2, pm10_0);
-    if (pm2_5 < 50) {
+    if (pm2_5 < 50)
+    {
       Blynk.virtualWrite(V3, HIGH);
       Blynk.virtualWrite(V4, LOW);
       Blynk.virtualWrite(V5, LOW);
     }
-    else if (pm2_5 < 100) {
+    else if (pm2_5 < 100)
+    {
       Blynk.virtualWrite(V3, LOW);
       Blynk.virtualWrite(V4, HIGH);
       Blynk.virtualWrite(V5, LOW);
     }
-    else {
+    else
+    {
       Blynk.virtualWrite(V3, LOW);
       Blynk.virtualWrite(V4, LOW);
       Blynk.virtualWrite(V5, HIGH);

@@ -1,7 +1,7 @@
 #include "FUNC_LCD.h"
 #include "FUNC_TM1638.h"
-#include "FUNC_SLEEP.h"
 #include "FUNC_SETTIMERTC.h"
+
 
 #include <PMS.h>
 #include <DHT.h>
